@@ -1,24 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import { FormattedMessage } from 'react-intl';
 import './App.css';
 
-function App() {
+const App = ({ setLanguage }) => {
+  const style = {
+    marginTop: '0.5rem'
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>
+        <FormattedMessage
+          id="text"
+          defaultMessage="Hello, welcome {user}"
+          description="Welcome message"
+          values={{ user: "John Doe" }}/>
+      </p>
+      <a href="#" target="_blank" rel="link">
+        <FormattedMessage
+          id="link"
+          defaultMessage="Go to link"
+          description="Check website"/>
+      </a>
+      <div style={style}>
+        <button onClick={() => setLanguage('en')}>英文</button>
+        <button onClick={() => setLanguage('zh-TW')}>中文</button>
+        <button onClick={() => setLanguage('nl')}>荷蘭語</button>
+      </div>
     </div>
   );
 }
